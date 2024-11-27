@@ -1,31 +1,17 @@
-name : Github Actions 실행시켜보기
+name: Deploy To S3 And Invalidate Cloudfront
 
-on: 
+# 로직이 언제 실행되었으면 좋겠는지 설정
+on:
   push:
     branches:
       - main
 
+# 
 jobs:
-  My-Deploy-Job:
-    runs-on: ubuntu-latest
-
+  deploy:
+    runs-on: ubuntu-latest  
     steps:
-      - name: Hello World 출력하기
-        run: echo "Hello World!"
+      - name: GitHub Repository
+        uses: actions/checkout@v4
+        
 
-      - name: 여러 명령어 문장 작성하기
-        run: |
-          echo "Good"
-          echo "Morning"
-          pwd
-
-      - name: Github Actions 자체 저장되어 있는 변수 사용해보2
-        run: |
-          echo $GITHUB_REPOSITORY
-          echo $GITHUB_SHA
-
-      - name: Github Actions Secret 변수 사용해보기
-        run: |
-          echo ${{secrets.MY_NAME}}
-          echo ${{secrets.MY_HOBBY}}
-          
